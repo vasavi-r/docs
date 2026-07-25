@@ -33,7 +33,7 @@ Discovery surfaces its inventory as a **Discovered Services** list on the host d
 The `instrumentable` flag reflects whether an injection path exists for the runtime. Java, .NET, Node.js, and Python are instrumentable. PHP is instrumentable when a tracer is available for the detected version. Go is not injected: it is covered by the eBPF baseline instead, so it appears as covered rather than instrumentable.
 :::
 
-TODO(screenshot): Discovered Services list on the host detail page, showing runtime, kind, listen ports, state, and the instrumentable flag.
+![The Discovered Services list on a host detail page, with instrumented services showing an "Instrumented" chip and Go services grouped under "Covered automatically by eBPF."](./images/discovery-services-list.png)
 
 ## Stable service identity
 

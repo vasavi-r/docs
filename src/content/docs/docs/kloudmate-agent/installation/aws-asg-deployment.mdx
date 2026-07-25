@@ -16,6 +16,7 @@ Once an instance's agent checks in, it starts in managed mode and begins collect
 - An existing ASG with a Launch Template
 - IAM Instance Profile attached to your ASG instances
 - SSM Agent running on instances (default on Amazon Linux / Ubuntu AMIs)
+- Network access to the [required URLs](../../reference/network-requirements/) if your outbound traffic is restricted
 
 ### Step 1: Store API Key in SSM Parameter Store
 
