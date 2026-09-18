@@ -53,10 +53,11 @@ A threshold detector is a plain ceiling for a state that's wrong at any scale. I
 
 Detectors are grouped by pack:
 
-- **Hosts & VMs:** CPU, memory, and network anomalies; a disk-fill forecast; disk-full and load-saturation thresholds.
+- **Hosts & VMs:** CPU, memory, and network anomalies; a disk-fill forecast; CPU-critically-high, memory-critically-high, disk-full, and load-saturation thresholds.
 - **Kubernetes & Containers:** pod CPU and memory anomalies; container memory-and-CPU-limit detectors; node, deployment, statefulset, and pod-health thresholds.
 - **Services (RED):** request latency and throughput anomalies.
 - **Kafka & Queues:** a consumer-lag anomaly; under-replicated, under-min-ISR, and offline-partition thresholds.
+- **Browser & Mobile (RUM):** detectors for real user monitoring data from browser and mobile apps.
 
 ![The Smart Alerts settings page: the Automatic monitoring toggle and the detector packs](./images/smart-alerts-settings.png)
 

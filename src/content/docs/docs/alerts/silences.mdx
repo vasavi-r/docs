@@ -15,7 +15,7 @@ Open **Alerts → Silences**. Silences are ad-hoc; for recurring quiet windows, 
 
 ![Silences list](./images/silences-list.png)
 
-Silences are grouped into **Active**, **Expired**, and **All** tabs.
+Silences are grouped into **Active**, **Expired**, and **All** tabs. The **Created by** column shows who created each silence.
 
 ## Anatomy of a silence
 
@@ -41,6 +41,8 @@ Create a silence from the Silences page, an alert group, or an alert's Pause Not
 ### From an Alert Group
 
 On any [Alert Group](../alert-groups/) detail page, click **Silence this group**. The silence creator opens with matchers derived from the group and a binding to it.
+
+![Silence created from an alert group](./images/silence-from-group.png)
 
 :::caution[A group binding sets when the silence ends, not what it mutes]
 The binding does one thing: when the bound group resolves, the silence's expiry moves to that moment and it lifts early. Matching never looks at it, so the silence mutes every alert in the workspace whose labels match its matchers, group member or not.
@@ -68,6 +70,8 @@ On an alert rule's **more options (⋯) → Pause Notifications**, KloudMate cre
 The Silences list carries an **Alerts muted** column: how many alert rules each active silence is muting. Expand a row to list those rules, each marked with a chip such as `3 firing` when its instances are firing. The silence detail page shows the same list, along with a link to the group the silence is bound to.
 
 To find what's muting a particular alert, check the alert's row on the **Rules** tab, its expanded instance rows, or its detail page. Each links to the silence or maintenance window that's muting the alert. When more than one applies, you can pick which one to open. A group's **Instances** panel marks muted instances but doesn't name the silence.
+
+![Alert rule muted by a silence](./images/silenced-by-rule.png)
 
 A new silence shows up in the **Alerts muted** count and on the alerts it mutes after those alerts are next evaluated. An expired silence clears from them the same way.
 

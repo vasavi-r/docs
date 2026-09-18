@@ -25,7 +25,7 @@ From the **more options (⋯)** icon on any rule, you can:
 - **Pause Evaluation** or **Pause Notifications**
 - **Delete** the rule
 
-![A rule's more options menu with Edit, Duplicate, Move to folder, Export as JSON, State history, Pause Evaluation, Pause Notifications, and Delete](./images/setting-up-kloudmate-alarms-1.jpeg)
+![A rule's more options menu with Edit, Duplicate, Move to folder, Export as JSON, State history, Resume Evaluation, Pause Notifications, and Delete](./images/setting-up-kloudmate-alarms-1.jpeg)
 
 **Pause Notifications** creates a temporary [silence](../silences/) scoped to this alert: the rule keeps evaluating, but KloudMate suppresses its notifications until the silence expires. While it's paused, the rule is marked **Silenced**; view or end the pause from **Alerts → Silences**. Add matchers to limit it to specific instances.
 
@@ -65,6 +65,9 @@ Instead of building an alert from scratch, start from a pre-configured template 
 ![Using AI prompt](./images/using-ai-prompt.png)
 
 3. Click **Create Alert**. KloudMate Builder opens with your description as a draft message.
+
+![Builder with a drafted alert description](./images/using-ai-builder-draft.png)
+
 4. Send the message. The Builder may ask follow-up questions before it fills in the rule in the alert editor. A draft that Simple mode can't represent, such as one with several queries or expressions, opens in Advanced mode.
 5. Review the query, condition, and evaluation settings, and change anything that doesn't match your environment.
 6. Click **Save**.
@@ -81,6 +84,8 @@ To switch, click **Advanced mode**. You can't switch back to Simple mode afterwa
 ## Build an alert in Simple mode
 
 Simple mode puts the whole rule on one page.
+
+![Simple mode alert editor](./images/simple-mode-editor.png)
 
 1. In **What to monitor**, choose a data source and set up the query. The query fields are the same as in [Advanced mode](#1-setup-query-conditions-and-expressions). Click **Run query** to chart the result.
 2. In **Alert when**, set the condition. For a **Threshold**, pick a reduction, a comparison, and a threshold value. To alert on unusual values or a trend instead, [choose a detection method](#choose-a-detection-method). Click **Preview alerts** to check the result.
@@ -127,8 +132,10 @@ Create more queries and expressions with the **Add Query** and **Add Expression*
 
 - **Data Set:** select the dataset you want to retrieve from your data source.
 - **Metric to Aggregate:** select the metric you want to monitor from that dataset.
+- **Aggregation:** choose the function applied to the metric, such as `Avg` or `Rate`. Click **Customize aggregation** for temporal and spatial aggregation controls. See [Metrics Aggregations](../../visualize-data/explore/metrics-aggregations/).
 - **Group By:** enter the attributes used to group the data points.
 - **Filters:** add filters to narrow the retrieved data points.
+- **Ranking:** control how the series are ordered.
 
 OpenTelemetry users can also use **Prometheus query language** to retrieve data and configure alerts.
 
@@ -227,6 +234,8 @@ The Notifications step controls how this alert flows into the grouping engine. I
 - **Routing:** [Routing Rules](../routing-rules/) in **Alerts → Routing rules** match alerts by label and send them to one or more notification channels.
 - **Severity:** flows through the reserved `severity` annotation from the previous step; downstream tools use it to prioritize.
 
+![Notifications step with a service label set to payment-gateway](./images/setting-up-kloudmate-alarms-6.png)
+
 If you're migrating a rule that used notification tags, it keeps working; routing now matches on labels instead.
 
 ### 5. Save the alert
@@ -244,5 +253,7 @@ To open an alert, select its name on the **Rules** tab. The detail page has thes
 - **Blast radius:** the resources the alert's instances map to, and what those resources depend on.
 - **History:** the state-change history over time.
 - **Rule:** the alert configuration and query definition.
+
+![Blast radius tab on an alert rule](./images/alarm-detail-blast-radius.png)
 
 The instance tables on **Overview** and **Instances** also show each instance's last evaluated value and when it was **Last seen**.

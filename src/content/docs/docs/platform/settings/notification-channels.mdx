@@ -10,13 +10,13 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 To receive notifications from KloudMate, you need to set up notification channels — the communication platforms where alerts and incident updates are sent.
 
 KloudMate supports the following notification channels:
-- Email
-- Slack
-- SNS
-- MS Teams
-- Webhook
-- Jira
-- KloudMate Incidents — bridges alerts and synthetic checks into [Incident Management](../../../incident-management/)
+- [Email](#email)
+- [Slack](#slack)
+- [SNS](#sns)
+- [MS Teams](#ms-teams)
+- [Webhook](#webhooks)
+- [Jira](#jira)
+- [KloudMate Incidents](#kloudmate-incidents) — bridges alerts and synthetic checks into [Incident Management](../../../incident-management/)
 
 A Slack or Jira channel can reuse an account you've already connected instead of asking for its own credential. The channel form lists the [connections](../connections/) carrying the **Notifications** capability, and offers to connect a new one inline. Reusing one means a single place to rotate the credential when it changes.
 
@@ -99,6 +99,8 @@ A webhook channel is also how an alert reaches a [workflow](../../../workflows/)
 By default, a webhook sends KloudMate's standard JSON payload, which some receivers reject. Google Chat, for example, accepts only a message object like `{"text": "..."}`, with its auth token in the webhook URL, so no header or secret is needed. The same `{"text": ...}` body also works for Slack incoming webhooks and Microsoft Teams. A webhook channel can rewrite its outgoing body and add headers to match.
 
 In the webhook channel editor, click **Customize request body and headers** to expand the options.
+
+![Webhook request body and headers](./images/webhook-customize-panel.png)
 
 **Request body** takes JSON with Liquid `{{ }}` placeholders inside string values, filled from the event. Leave it empty to send the default payload. The **Examples** menu fills it with a starter template, and [Notification Payloads](#notification-payloads) lists the fields each event type exposes.
 
@@ -366,8 +368,9 @@ KloudMate Incidents is the channel type that bridges into [Incident Management](
 ![Create KloudMate Incidents channel](./images/channel-km-incidents-form.png)
 
 1. Select **KloudMate Incidents** from the dropdown menu.
-2. Pick the IM service you want to bridge into from the **Linked IM service** dropdown. If you don't have any services yet, KloudMate prompts you to create one first.
-3. Click **Create channel**.
+2. Enter a **Channel name**, such as `KloudMate Incidents – Payments`.
+3. Pick the IM service you want to bridge into from the **Linked IM service** dropdown. If you don't have any services yet, KloudMate prompts you to create one first.
+4. Click **Create channel**.
 
 KloudMate automatically creates two rows:
 

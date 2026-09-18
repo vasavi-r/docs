@@ -22,6 +22,8 @@ Open **Alerts**, which starts on the **Groups** tab: the workspace-wide view of 
 
 ![The Groups tab: the All, Firing, and Resolved filter, the Routing rule filter, the search box, and the group list](./images/alert-groups-list.png)
 
+Above the list, a summary shows how many groups are firing and how many are resolved, such as **6 Firing, 130 Resolved**.
+
 Columns: **Group** (title), **State** (**Firing** or **Resolved**), **Severity**, **Instances** (the number of unique instances in the group), **Opened**, **Last update**, and **RCA** when an investigation is attached (a manual **Run RCA** or [Auto-RCA](../auto-rca/)).
 
 Expand any row to preview that group's alerts inline, with each alert's state, instance counts, and when it was last seen. The group title links straight to the full detail page.
@@ -94,6 +96,8 @@ This is the manual trigger. To investigate every group a rule opens automaticall
 - **Audit:** a timeline of the group's history, from when it opened to when it resolved. It records each notification and reminder sent, notifications suppressed by a silence or skipped, and investigations. For Auto-correlated groups, it also logs when the engine opened the group and when it correlated each alert.
 - **Notifications:** every notification sent for the group, reminders included, with each channel's result and a link to where it landed: the Slack thread, the Jira ticket, the KloudMate Incidents incident, and so on.
 
+![Reminder on an alert group Audit tab](./images/alert-group-audit-reminder.png)
+
 ### Blast radius
 
 The **Blast radius** tab resolves the group's firing alerts to the resources they name, then graphs what each one depends on, so you can see how far the incident reaches.
@@ -108,7 +112,7 @@ The same graph appears on a single alert's **Blast radius** tab and on a resourc
 
 **Why these were grouped** gives the reason in plain English, the shared labels, and supporting detail.
 
-This reason appears only when the engine correlated more than one alert. A lone alert the engine left on its own has none, which is expected (see [Cold start](#cold-start)).
+This reason appears only when the engine grouped more than one alert instance, either several alerts or the same alert firing on multiple targets. A lone instance the engine left on its own has none, which is expected (see [Cold start](#cold-start)).
 
 ### Cold start
 

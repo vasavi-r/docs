@@ -57,6 +57,8 @@ A matcher value is always a single string. To match any of several values, use a
 
 In **Static** mode, the editor shows a live **Alerts this rule matches** preview as you add or edit matchers: the alert instances this rule currently matches, with a running count, so you can confirm the rule's scope before saving. A higher-priority rule may handle some of those alerts first.
 
+Above the preview, **What this rule does** describes the rule in plain language: which alerts it handles, how it groups them, when it notifies and reminds, and when Auto-RCA starts. Read it before saving to check that the rule does what you intended.
+
 ### Alert grouping: Static or Auto (AI)
 
 Each rule has an **Alert grouping** control. New rules start in **Auto (AI)**, and a saved rule keeps the mode it was saved with.
@@ -68,7 +70,7 @@ Switch a rule to **Static** when you want predictable grouping along keys you co
 
 For how each mode decides what belongs together, including why one rule firing on many hosts stays a single Auto group, see [How Alert Grouping Works](../how-alert-grouping-works/).
 
-![Routing rule editor with Alert grouping set to Auto (AI), which hides the Group by keys and the Alerts this rule matches preview](./images/routing-rules-alert-grouping.png)
+![Routing rule editor with Alert grouping set to Static, a Group by key, and Notification timing with Repeat interval set to 1h](./images/routing-rules-alert-grouping.png)
 
 ### Group-by keys
 
@@ -158,6 +160,7 @@ Each suggestion shows:
 
 - A title naming the proposed keys (for example, "Group by service + env").
 - A short rationale: how many alert instances it would have collapsed into how few groups.
+- The proposed **Group by** keys.
 - How many instances it would have matched over the lookback window.
 
 **Accept** fills in the rule you're editing with the suggested group-by keys and notification timing. It replaces your matchers only when the suggestion has matchers of its own, and it names the rule only if the name is still blank. **Dismiss** hides the suggestion.
