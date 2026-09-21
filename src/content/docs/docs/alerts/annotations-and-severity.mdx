@@ -112,7 +112,7 @@ A custom title gives the alert a readable headline in every channel. **Title** i
 
 ![Title field with a template](./images/custom-notification-title.png)
 
-The title replaces the automatic title in the email subject, the Slack and Microsoft Teams message, the Jira summary and heading, the SNS subject, the KloudMate Incidents incident title, and the webhook payload's `group.title`. It also names the group on **Alerts → Groups**, set when the group opens. When a notification covers more than one instance, the instance count is added to the end, for example `· 3 instances`.
+The title replaces the automatic title in the email subject, the Slack and Microsoft Teams message, the Jira summary and heading, the SNS subject, the KloudMate Incidents incident title, and the webhook payload's `group.title`. It also names the group on **Alerts → Groups**, set when the group opens. The instance count is added to the end, for example `- 3 instances`.
 
 The title is used only when it renders the same for every instance in the group, and every rule in the group has the same title. Build it from labels that are the same across the group, such as a service or a namespace. A value that differs between instances, such as a pod name, a host name, or `state.value`, gives each instance a different title. Notifications then use the automatic title, and the group on **Alerts → Groups** keeps the alert's name.
 
@@ -122,7 +122,9 @@ For example, with a [routing rule](../routing-rules/) that groups by `k8s_namesp
 Memory pressure in {{ labels.k8s_namespace_name }}
 ```
 
-When three instances in the `payments` namespace are firing, the title reads `Memory pressure in payments · 3 instances`.
+When three instances in the `payments` namespace are firing, the title reads `Memory pressure in payments - 3 instances`.
+
+![Notification using a custom title](./images/custom-title-notification.png)
 
 The template can use `labels.*` (the rule's labels plus the series labels), `state.value`, `state.values.*`, `rule.name`, and `rule.description`. If it renders empty, or still contains `{{` or `{%` because the template didn't render, the automatic title is used.
 

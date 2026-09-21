@@ -87,11 +87,15 @@ The **Workloads** tab lists deployments, daemonsets, statefulsets, and other wor
 
 The **Jobs** tab lists Jobs across your clusters, with their status, completions (succeeded out of desired, the same count `kubectl` shows), and active, failed, and parallelism counts. Filter by cluster, namespace, or status to find Jobs that failed or haven't completed. To list CronJobs instead, select **CronJob** as the job type. Each CronJob shows its cluster, namespace, and number of active jobs.
 
+![Jobs tab in Kubernetes](./images/kubernetes-jobs-tab.png)
+
 ## Find resources that stopped reporting
 
 Every tab includes a **Last seen** column. A resource stays in the list for seven days after it last reported, and its **Last seen** dot turns from green to gray once it has gone 15 minutes without reporting. If a resource reported nothing in the selected time range, its metric cells show a dash.
 
 Set the **Reporting** filter to **Reporting now** to list only live resources, or to **Stopped reporting** to find resources that stopped sending data. When the filter is empty, the pod, ReplicaSet, and Job lists show only resources that are reporting now, and every other list shows everything seen in the last seven days.
+
+![Reporting filter in Kubernetes](./images/kubernetes-reporting-filter.png)
 
 ## Validation Checklist
 
